@@ -1,19 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include <optional>
 class Cell
 {
 public:
 	Cell(float x, float y, sf::RenderWindow* window) {
 		Cell::Player_status = 0;
+		Cell::entity_pointer = std::nullopt
 	};
 	sf::RenderWindow* get_window();
 	void render();
-	Entity* entity_pointer; /*Указатель на существо вкутри клетки*/
-	
+	std::optional<Entity*> entity_pointer; /*пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ*/
+
 private:
 	sf::Vector2f coord;
 	sf::RenderWindow* window;
-	unsigned short int Player_status; /*Если 0 - пустая, далее по номеру игрока*/
+	unsigned short int Player_status; /*пїЅпїЅпїЅпїЅ 0 - пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ*/
 };
-
