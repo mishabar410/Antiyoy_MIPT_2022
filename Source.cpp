@@ -6,11 +6,8 @@
 
 
 int main(){
-{
 
     GameCore gamecore;
     gamecore.start();
     return 0;
-
-    }
 }
