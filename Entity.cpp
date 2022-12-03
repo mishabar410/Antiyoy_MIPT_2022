@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include "Cell.h"
 
-Entity::Entity(std::string name) {
+Entity::Entity(std::string name, Cell* cell) {
 	tex.loadFromFile(name);
 	tex.setSmooth(true);
 	tex.setRepeated(true);
