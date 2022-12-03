@@ -2,6 +2,8 @@
 
 Cell::Cell(float x, float y, sf::RenderWindow* window)
 {
+    Cell::entity_pointer = std::nullopt
+    
     sf::CircleShape hexagon(25, 6);
     hexagon.setOutlineColor(sf::Color::Black);
     hexagon.setOutlineThickness(5);
