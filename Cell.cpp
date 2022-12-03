@@ -20,7 +20,7 @@ sf::RenderWindow* Cell::get_window()
     return this->window;
 }
 
-void Cell::render()
+void Cell::render()//рисует
 {
     sf::CircleShape hexagon(25, 6);
     hexagon.setOutlineColor(sf::Color::Black);
