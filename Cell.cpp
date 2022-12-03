@@ -13,6 +13,7 @@ Cell::Cell(float x, float y, sf::RenderWindow* window)
     this->coord.y = y;
     hexagon.setPosition(x, y);
     this->window = window;
+    this->Player_status = 0;
 }
 
 sf::RenderWindow* Cell::get_window()
@@ -20,7 +21,8 @@ sf::RenderWindow* Cell::get_window()
     return this->window;
 }
 
-void Cell::render()//рисует
+void Cell::render()
+/*рисует шестиугольник aka клетку*/
 {
     sf::CircleShape hexagon(25, 6);
     hexagon.setOutlineColor(sf::Color::Black);
@@ -31,4 +33,9 @@ void Cell::render()//рисует
     sf::RenderWindow* win = this->get_window();
     win->draw(hexagon);
 
+}
+
+sf::Vector2f Cell::get_coord()
+{
+    return coord;
 }

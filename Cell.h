@@ -4,15 +4,14 @@
 class Cell
 {
 public:
-	Cell(float x, float y, sf::RenderWindow* window) {
-		Cell::Player_status = 0;
-	};
+	Cell(float x, float y, sf::RenderWindow* window);
 	sf::RenderWindow* get_window();
 	void render();
+	sf::Vector2f get_coord();
 	std::optional<Entity*> entity_pointer; /*��������� �� �������� ������ ������*/
 
 private:
-	sf::Vector2f coord;
+	sf::Vector2f coord;/*координаты*/
 	sf::RenderWindow* window;
 	unsigned short int Player_status; /*���� 0 - ������, ����� �� ������ ������*/
 };

@@ -9,9 +9,7 @@ class Entity
 	
 	Cell* cell;
 public:
-	Entity(std::string name) {
-
-	};
+	Entity(std::string name, Cell* cell);
 	void render();
 	sf::Sprite sprite;
 	unsigned short int power;
