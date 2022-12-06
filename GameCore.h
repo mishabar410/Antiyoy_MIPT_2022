@@ -1,8 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Cell.cpp"
 #include <vector>
+
+#include "Player.h"
+#include "Cell.h"
+#include "Entity.h"
 
 class GameCore {
 

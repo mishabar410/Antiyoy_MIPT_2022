@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <optional>
+#include "Entity.h"
+
 class Cell
 {
 public:

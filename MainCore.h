@@ -1,7 +1,12 @@
 #pragma once
 #include <vector>
+#include "GameCore.h"
+#include "Player.h"
+#include "Cell.h"
 #include "Entity.h"
-#include "MainCore.cpp"
+
+
+
 
 class MainCore {
 

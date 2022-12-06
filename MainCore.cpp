@@ -1,6 +1,8 @@
 #include "MainCore.h"
 #include "Player.h"
 #include "Gamecore.h"
+#include "Entity.h"
+#include "Cell.h"
 
 
 void MainCore::entity_steps(Cell* StartCell) {

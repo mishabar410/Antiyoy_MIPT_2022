@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Cell.h"
+#include "Entity.h"
 
 class Player {
 private:

@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include "Entity.h"
 
 Cell::Cell(float x, float y, sf::RenderWindow* window)
 {

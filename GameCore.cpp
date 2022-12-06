@@ -1,5 +1,7 @@
-#include "GameCore.h"
 #include <iostream>
+
+#include "GameCore.h"
+#include "Player.h"
 #include "Cell.h"
 #include "Entity.h"
 
