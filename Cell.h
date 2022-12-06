@@ -8,7 +8,7 @@ public:
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();
-	std::optional<Entity*> entity_pointer; /*Pointer to entity in this cell*/
+	//std::optional<Entity*> entity_pointer; /*Pointer to entity in this cell*/
 
 private:
 	sf::Vector2f coord;/*координаты*/
