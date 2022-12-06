@@ -8,10 +8,10 @@ public:
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();
-	std::optional<Entity*> entity_pointer; /*��������� �� �������� ������ ������*/
+	std::optional<Entity*> entity_pointer; /*Pointer to entity in this cell*/
 
 private:
 	sf::Vector2f coord;/*координаты*/
 	sf::RenderWindow* window;
-	unsigned short int Player_status; /*���� 0 - ������, ����� �� ������ ������*/
+	unsigned short int Player_status; /*0, if there no player, Player_num if there is*/
 };

@@ -1,14 +1,20 @@
 #pragma once
 #include <vector>
 #include "Entity.h"
+#include "MainCore.cpp"
 
 class MainCore {
 
 private:
-	Cell* Map[20][20]; /*Массив клеток, которые представляют из себя карту*/
-	vector <Entity*> Entities; /*Вектор всех существ в игре*/
+
 public:
-	MainCore() {
-		/*Необходимо создать Map и Players*/
-	}
+	MainCore();
+	bool gamestatus;
+	GameCore Core;
+	Player Player1;
+	Player Player2;
+	Player* players = [&Player1, &Player2];
+	Cell Map[20][20];
+	Cell* Map_pointer[20][20]; /*x, y coords*/
+	vector <Entity*> Entities; /*Вектор всех существ в игре*/
 };
