@@ -1,15 +1,14 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
 
-#define ll long long
-#define INF 1000000000
 
 int main() {
-    vector<vector<int>> g(400, vector<int>());
 
-    for (size_t i = 0; i < 20; i++)
+    std::vector<std::vector<int>> g(400, std::vector<int>());
+
+    for (unsigned int i = 0; i < 20; i++)
     {
-        for (size_t j = 0; j < 20; j++)
+        for (unsigned int j = 0; j < 20; j++)
         {
             if (i == 0 && j == 0)
             {
@@ -88,12 +87,12 @@ int main() {
             }
         }
     }
-    for (size_t i = 0; i < 400; i++) {
-        cout << i << ": ";
-        for (size_t j = 0; j < g[i].size(); j++) {
-            cout << g[i][j] << " ";
+    for (unsigned int i = 0; i < 400; i++) {
+        std::cout << i << ": ";
+        for (unsigned int j = 0; j < g[i].size(); j++) {
+            std::cout << g[i][j] << " ";
         }
-        cout << endl;
+        std::cout << "\n";
     }
     return 0;
 }
