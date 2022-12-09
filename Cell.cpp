@@ -1,9 +1,10 @@
+#include <SFML/Graphics.hpp>
 #include "Cell.h"
 #include "Entity.h"
 
 Cell::Cell(float x, float y, sf::RenderWindow* window)
 {
-    Cell::entity_pointer = std::nullopt
+    Cell::entity_pointer = std::nullopt;
     
     sf::CircleShape hexagon(25, 6);
     hexagon.setOutlineColor(sf::Color::Black);
