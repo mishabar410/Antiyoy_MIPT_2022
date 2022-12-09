@@ -1,18 +1,18 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
 
-#define ll long long
-#define INF 1000000000
 
 int main() {
     int n, tmp;
-    cin >> n;
-    vector<vector<int>> g(n, vector<int>());
-    for(int i = 0; i < n; i++)
+    std::cin >> n;
+    std::vector<std::vector<int>> g(n, std::vector<int>());
+    for(unsigned int i = 0; i < n; i++)
     {
-        for(int j = 0; j < n; j++)
+        for(unsigned int j = 0; j < n; j++)
         {
-            cin >> tmp;
+            std::cin >> tmp;
             if (tmp)
             {
                 g[i].push_back(j);
@@ -22,21 +22,21 @@ int main() {
     }
 
     int s, to;
-    cin >> s >> to;
+    std::cin >> s >> to;
     s--;
     to--;
 
-    queue<int> q;
+    std::queue<int> q;
     q.push (s);
-    vector<bool> used (n);
-    vector<int> d (n), p (n);
+    std::vector<bool> used (n);
+    std::vector<int> d (n), p (n);
     used[s] = true;
     p[s] = -1;
     while (!q.empty())
     {
     	int v = q.front();
     	q.pop();
-    	for (size_t i = 0; i < g[v].size(); ++i)
+    	for (unsigned int i = 0; i < g[v].size(); ++i)
         {
     		int to = g[v][i];
     		if (!used[to])
@@ -49,17 +49,17 @@ int main() {
     	}
     }
 
-    if (!used[to]) cout << -1;
+    if (!used[to]) std::cout << -1;
     else
     {
-    	vector<int> path;
+    	std::vector<int> path;
     	for (int v = to; v != -1; v = p[v]) path.push_back(v);
-    	reverse (path.begin(), path.end());
-        cout << path.size() - 1 << endl;
+    	std::reverse (path.begin(), path.end());
+        std::cout << path.size() - 1 << std::endl;
         if (path.size() - 1 > 0)
         {
-            for (size_t i = 0; i < path.size(); ++i)
-                cout << path[i] + 1 << " ";
+            for (unsigned int i = 0; i < path.size(); ++i)
+                std::cout << path[i] + 1 << " ";
         }
     }
 
