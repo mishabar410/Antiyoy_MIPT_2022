@@ -1,17 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <optional>
 #include "Entity.h"
 
 class Cell
 {
 public:
-	Cell();
-	Cell(float x, float y, sf::RenderWindow* window);
+	Cell(int x, int y, sf::RenderWindow* window, Entity* entity_pointer = nullptr);
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();
-	std::optional<Entity*> entity_pointer; /*Pointer to entity in this cell*/
+	bool IsinCell(sf::Vector2i mouse_pos);
+	Entity* entity_pointer;//may be use optional
+	int map_coord[2];
 
 private:
 	sf::Vector2f coord;/*координаты*/

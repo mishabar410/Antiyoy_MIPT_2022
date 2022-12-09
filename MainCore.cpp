@@ -6,114 +6,29 @@
 
 
 void MainCore::entity_steps(Cell* StartCell) {
-    int x = StartCell->coord.x;
-    int y = StartCell->coord.y;
-    int coord = x * 20 + y;
-
     /*
-    пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ Entity пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ Cell::entity_pointer. (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ?)
-    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Map пїЅ GameCore пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Entity (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ entity_pointer), пїЅпїЅпїЅпїЅпїЅпїЅ
-    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ power, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+    Сперва идет проверка на то, есть ли Entity в клетке, через Cell::entity_pointer. (Продумать
+    как это сделать?)
+    Используя Map в GameCore вернуть массив указателей на клетки в которые можно ходить
+    Клетки в которых находятся Entity (у каждой клетки есть entity_pointer), должны 
+    проверяться на power, и только в случае, если сила основного воина больше защищающегося
+    передавать указатель на клетку.
     */
-}
-
-MainCore::Fill_adj_list() {
-    for (unsigned int i = 0; i < 20; i++)
-    {
-        for (unsigned int j = 0; j < 20; j++)
-        {
-            if (i == 0 && j == 0)
-            {
-                adjacency_list[i * 20 + j].push_back(1);
-                adjacency_list[i * 20 + j].push_back(20);
-            }
-            if (i == 19 && j == 0)
-            {
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20);
-                adjacency_list[i * 20 + j].push_back(i * 20 + 1);
-            }
-            if (i == 0 && j == 19)
-            {
-                adjacency_list[i * 20 + j].push_back(18);
-                adjacency_list[i * 20 + j].push_back(38);
-                adjacency_list[i * 20 + j].push_back(39);
-            }
-            if (i == 19 && j == 19)
-            {
-                adjacency_list[i * 20 + j].push_back(i * 20 + j - 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j - 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j);
-            }
-            if (i == 0 && (j > 0 && j < 19))
-            {
-                adjacency_list[i * 20 + j].push_back(j - 1);
-                adjacency_list[i * 20 + j].push_back(j + 1);
-                adjacency_list[i * 20 + j].push_back(20 + j);
-                adjacency_list[i * 20 + j].push_back(20 + j - 1);
-            }
-            if (i == 19 && (j > 0 && j < 19))
-            {
-                adjacency_list[i * 20 + j].push_back(i * 20 + j - 1);
-                adjacency_list[i * 20 + j].push_back(i * 20 + j + 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j + 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j);
-            }
-            if ((i > 0 && i < 19) && (j > 0 && j < 19))
-            {
-                adjacency_list[i * 20 + j].push_back(i * 20 + j - 1);
-                adjacency_list[i * 20 + j].push_back(i * 20 + j + 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j);
-                adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j);
-                if (i % 2 == 0)
-                {
-                    adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j - 1);
-                    adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j - 1);
-                }
-                else
-                {
-                    adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j + 1);
-                    adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j + 1);
-                }
-            }
-            if ((i > 0 && i < 19) && j == 0)
-            {
-                adjacency_list[i * 20 + j].push_back(i * 20 + j + 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j);
-                adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j);
-                if (i % 2 == 1)
-                {
-                    adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j + 1);
-                    adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j + 1);
-                }
-            }
-            if ((i > 0 && i < 19) && j == 19)
-            {
-                adjacency_list[i * 20 + j].push_back(i * 20 + j - 1);
-                adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j);
-                adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j);
-                if (i % 2 == 0)
-                {
-                    adjacency_list[i * 20 + j].push_back((i - 1) * 20 + j - 1);
-                    adjacency_list[i * 20 + j].push_back((i + 1) * 20 + j - 1);
-                }
-            }
-        }
-    }
 }
 
 MainCore::MainCore() {
     gamestatus = 1;
-    for (unsigned short int x = 0; x < 20; x++) {
-        for (unsigned short int y = 0; y < 20; y++) {
-            Map[x][y] = Cell(x, y, window);
+    GraphicsCore = GameCore();
+    /*for (int x = 0; x < 20; x++) {
+        for (int y = 0; y < 20; y++) {
+            Map[x][y] = Cell(x, y, GraphicsCore.window);
             Map_pointer[x][y] = &Map[x][y];
         }
     }
-    Player1 = Player(Map_pointer[20][20]);
-    Player2 = Player(Map_pointer[0][0]);
-    Core = GameCore(Map_pointer, Player1, Player2);
+    */
+    Cell kk = Cell(1, 1, GraphicsCore.window);
+    std::cout << kk.map_coord[0];
+    /*Player1 = Player(&Map[20][20]);
+    Player2 = Player(&Map[0][0]);*/
 
 }
