@@ -19,13 +19,16 @@ void MainCore::entity_steps(Cell* StartCell) {
 MainCore::MainCore() {
     gamestatus = 1;
     GraphicsCore = GameCore();
-    for (unsigned short int x = 0; x < 20; x++) {
-        for (unsigned short int y = 0; y < 20; y++) {
+    /*for (int x = 0; x < 20; x++) {
+        for (int y = 0; y < 20; y++) {
             Map[x][y] = Cell(x, y, GraphicsCore.window);
             Map_pointer[x][y] = &Map[x][y];
         }
     }
-    Player1 = Player(&Map[20][20]);
-    Player2 = Player(&Map[0][0]);
+    */
+    Cell kk = Cell(1, 1, GraphicsCore.window);
+    std::cout << kk.map_coord[0];
+    /*Player1 = Player(&Map[20][20]);
+    Player2 = Player(&Map[0][0]);*/
 
 }

@@ -21,7 +21,6 @@ public:
 	Player Player2;
 	Player* players; /*[Player1, Player2*/
 	Cell Map[20][20];
-	Cell* Map_pointer[20][20]; /*x, y coords*/
 	std::vector<Entity*> Entities; /*Вектор всех существ в игре*/
 	void entity_steps(Cell* StartCell);
 };
