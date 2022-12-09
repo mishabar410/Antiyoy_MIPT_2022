@@ -8,3 +8,8 @@ Player::Player(Cell* start_cell) {
 	money = 10;
 	self_cells.push_back(start_cell);
 }
+
+Player::Player()
+{
+	
+}

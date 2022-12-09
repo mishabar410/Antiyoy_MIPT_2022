@@ -8,6 +8,7 @@ class Player {
 private:
 
 public:
+	Player();
 	Player(Cell* start_cell);
 	unsigned short int money;
 	std::vector<Cell*> self_cells;

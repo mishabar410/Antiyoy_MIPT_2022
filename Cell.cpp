@@ -18,6 +18,11 @@ Cell::Cell(int x, int y, sf::RenderWindow* window, Entity* entity_ptr)
     entity_pointer = entity_ptr;
 }
 
+Cell:Cell()
+{
+    
+}
+
 sf::RenderWindow* Cell::get_window()
 {
     return window;

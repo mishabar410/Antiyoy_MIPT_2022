@@ -6,6 +6,7 @@ class Cell
 {
 public:
 	Cell(int x, int y, sf::RenderWindow* window, Entity* entity_pointer = nullptr);
+	Cell();
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();
