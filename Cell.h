@@ -11,7 +11,7 @@ public:
 	sf::Vector2f get_coord();
 	bool IsinCell(sf::Vector2i mouse_pos);
 	Entity* entity_pointer;//may be use optional
-	unsigned short int map_coord[2];
+	int map_coord[2];
 
 private:
 	sf::Vector2f coord;/*координаты*/
