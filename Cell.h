@@ -5,7 +5,7 @@
 class Cell
 {
 public:
-	Cell(int x, int y, sf::RenderWindow* window, Entity* entity_pointer = 0, float radius = 25);
+	Cell(int x, int y, sf::RenderWindow* window, Entity* entity_pointer = 0);
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();
@@ -17,5 +17,4 @@ private:
 	sf::Vector2f coord;/*координаты*/
 	sf::RenderWindow* window;
 	unsigned short int Player_status; /*0, if there no player, Player_num if there is*/
-	int radius;
 };

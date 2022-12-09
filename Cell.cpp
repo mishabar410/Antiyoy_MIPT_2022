@@ -2,21 +2,19 @@
 #include "Cell.h"
 #include "Entity.h"
 
-Cell::Cell(int x, int y, sf::RenderWindow* window, Entity* entity_ptr, float r)
+Cell::Cell(int x, int y, sf::RenderWindow* window, Entity* entity_ptr)
 {
-    sf::CircleShape hexagon(radius, 6);
+    sf::CircleShape hexagon(25, 6);
 
     map_coord[0] = x;
     map_coord[1] = y;
     hexagon.setOutlineColor(sf::Color::Black);
     hexagon.setOutlineThickness(5);
     hexagon.setFillColor(sf::Color::White);
-    hexagon.setOrigin(radius, radius);
-    coord.x = x;
-    coord.y = y;
+    hexagon.setOrigin(25, 25);
+    coord = sf::Vector2f((y % 2 ? 75 : 50) + x * 50.f, 50 + y * 40.f);
     this->window = window;
     this->Player_status = 0;
-    radius = r;
     entity_pointer = entity_ptr;
 }
 
@@ -28,12 +26,11 @@ sf::RenderWindow* Cell::get_window()
 void Cell::render()
 /*рисует шестиугольник aka клетку*/
 {
-    sf::CircleShape hexagon(radius, 6);
+    sf::CircleShape hexagon(25, 6);
     hexagon.setOutlineColor(sf::Color::Black);
     hexagon.setOutlineThickness(5);
     hexagon.setFillColor(sf::Color::Green);
-    //hexagon.setOrigin((float)radius, (float)radius);
-    hexagon.setPosition(coord.x - radius, coord.y - radius);
+    hexagon.setPosition(coord);
 
     sf::RenderWindow* win = this->get_window();
     win->draw(hexagon);
@@ -51,12 +48,11 @@ bool Cell::IsinCell(sf::Vector2i point)
 * нужно добавить проверку на остальные 4 стороны
 */
 {
-    sf::Vector2f delta = this->get_coord();
-    float x = point.x - delta.x;
-    float y = point.y - delta.y;
+    float x = point.x - coord.x;
+    float y = point.y - coord.y;
     float distsq = x * x + y * y;
-    if (distsq > radius * radius) return false;
-    if (4 * distsq <= 3 * radius * radius) return true;
+    if (distsq > 25 * 25) return false;
+    if (4 * distsq <= 3 * 25 * 25) return true;
     return false;
 
 }
