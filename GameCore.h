@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "Player.h"
 #include "Cell.h"
 #include "Entity.h"
 
