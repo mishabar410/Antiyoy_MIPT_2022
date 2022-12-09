@@ -140,9 +140,11 @@ void MainCore::fill_adj_list():
     }
 }
 
-MainCore::MainCore() {
+MainCore::MainCore()
+{
     gamestatus = 1;
     GraphicsCore = GameCore();
+<<<<<<< HEAD
     for (int x = 0; x < 20; x++) {
         for (int y = 0; y < 20; y++) {
           
@@ -152,7 +154,19 @@ MainCore::MainCore() {
         }
     }
     
+=======
+    for (int x = 0; x < 20; x++)
+    {
+        for (int y = 0; y < 20; y++)
+        {
+
+            // Map[x][y] = Cell(x, y, GraphicsCore.window);
+            // Map_pointer[x][y] = &Map[x][y];
+            Map[x][y] = Cell(x, y, GraphicsCore.window);
+        }
+    }
+
+>>>>>>> e219cf1 (entity steps)
     /*Player1 = Player(&Map[20][20]);
     Player2 = Player(&Map[0][0]);*/
-
 }
