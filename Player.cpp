@@ -1,10 +1,14 @@
+#include<iostream>
 #include "Player.h"
-#include <SFML/Graphics.hpp>
-#include "Entity.h"
 #include "Cell.h"
-#include <vector>
+#include "Entity.h"
 
-Player::Player(Cell* start_cell) {
+Player::Player(Cell* start_cell)
+{
 	money = 10;
-	self_cells.push_back(start_cell);
+	self_cells = [start_cell];
+}
+
+Player::Player() {
+
 }

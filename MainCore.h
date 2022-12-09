@@ -14,13 +14,14 @@ private:
 
 public:
 	MainCore();
-	GameCore GraphicsCore;
 	bool gamestatus;
 	GameCore Core;
 	Player Player1;
 	Player Player2;
 	Player* players; /*[Player1, Player2*/
 	Cell Map[20][20];
-	std::vector<Entity*> Entities; /*Вектор всех существ в игре*/
+	Cell* Map_pointer[20][20]; /*x, y coords*/
+	std::vector<Entity*> Entities; /*пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ*/
 	void entity_steps(Cell* StartCell);
+	std::vector<std::vector<int>> adjacency_list(400, std::vector<int>());
 };

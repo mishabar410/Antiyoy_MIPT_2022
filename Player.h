@@ -2,15 +2,15 @@
 
 #include "Cell.h"
 #include "Entity.h"
-#include <vector>
 
 class Player {
 private:
 
 public:
 	Player(Cell* start_cell);
+	Player();
 	unsigned short int money;
-	std::vector<Cell*> self_cells;
-	std::vector<Cell*> self_entity_cells; /*Cells, where there are entities*/
+	Cell* self_cells;
+	Cell* self_entity_cells; /*Cells, where there are entities*/
 	bool movestatus; /*1 if Player's move now*/
 };
