@@ -7,7 +7,9 @@ class Player {
 private:
 
 public:
+	Player(Cell* start_cell);
 	unsigned short int money;
 	Cell* self_cells;
 	Cell* self_entity_cells; /*Cells, where there are entities*/
+	bool movestatus; /*1 if Player's move now*/
 };

@@ -16,11 +16,11 @@ void MainCore::entity_steps(Cell* StartCell) {
     */
 }
 
-void Maincore::Maincore() {
-    gamestatus = True;
+MainCore::MainCore() {
+    gamestatus = 1;
     for (unsigned short int x = 0; x < 20; x++) {
-        for (unsigned short int y = 0; y < 20, y++) {
-            Map[x][y] = Cell(x, y);
+        for (unsigned short int y = 0; y < 20; y++) {
+            Map[x][y] = Cell(x, y, window);
             Map_pointer[x][y] = &Map[x][y];
         }
     }
