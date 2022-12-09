@@ -17,8 +17,8 @@ void MainCore::entity_steps(Cell* StartCell) {
 }
 
 MainCore::MainCore() {
-    bool gamestatus = 1;
-    GameCore GraphicsCore = GameCore();
+    gamestatus = 1;
+    GraphicsCore = GameCore();
     for (unsigned short int x = 0; x < 20; x++) {
         for (unsigned short int y = 0; y < 20; y++) {
             Map[x][y] = Cell(x, y, GraphicsCore.window);

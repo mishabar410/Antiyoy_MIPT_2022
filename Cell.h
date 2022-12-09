@@ -5,12 +5,13 @@
 class Cell
 {
 public:
-	Cell(float x, float y, sf::RenderWindow* window, Entity* entity_pointer = 0, float radius = 25);
+	Cell(int x, int y, sf::RenderWindow* window, Entity* entity_pointer = 0, float radius = 25);
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();
 	bool IsinCell(sf::Vector2i mouse_pos);
 	Entity* entity_pointer;//may be use optional
+	unsigned short int map_coord[2];
 
 private:
 	sf::Vector2f coord;/*координаты*/
