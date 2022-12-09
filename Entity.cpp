@@ -1,24 +1,18 @@
 #include <SFML/Graphics.hpp>
 #include "Entity.h"
 
-Entity::Entity(std::string name, Cell* cell) {
+Entity::Entity(std::string name, float x, float y, bool stat, unsigned short int money) {
 	tex.loadFromFile(name);
 	tex.setSmooth(true);
-	tex.setRepeated(true);
 	sprite.setTexture(tex);
 	sprite.setScale(0.3, 0.3);
 	sf::Vector2f delta;
-	delta.x = -25;
-	delta.y = -33;
-	sprite.setPosition(cell->get_coord() + delta);
-	this->cell = cell;
-	this->power = 0;
-
+	sprite.setPosition(coord);
+	power = 0;
+	alive_status = stat;
+	money_cost = money;
 }
 
-void Entity::render()
-{
-	Cell* cell = this->cell;
-	sf::RenderWindow* win = cell->get_window();
-	win->draw(sprite);
+void Entity::get_killed() {
+	alive_status = 0;
 }
