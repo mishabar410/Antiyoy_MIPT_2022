@@ -2,7 +2,7 @@
 #include "Cell.h"
 #include "Entity.h"
 
-Cell::Cell(float x, float y, sf::RenderWindow* window, float r, Entity* entity_ptr)
+Cell::Cell(float x, float y, sf::RenderWindow* window, Entity* entity_ptr, float r)
 {
     sf::CircleShape hexagon(radius, 6);
     hexagon.setOutlineColor(sf::Color::Black);

@@ -5,7 +5,7 @@
 class Cell
 {
 public:
-	Cell(float x, float y, sf::RenderWindow* window, float radius = 25, Entity* entity_pointer = 0);
+	Cell(float x, float y, sf::RenderWindow* window, Entity* entity_pointer = 0, float radius = 25);
 	sf::RenderWindow* get_window();
 	void render();
 	sf::Vector2f get_coord();

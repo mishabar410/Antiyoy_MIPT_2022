@@ -14,6 +14,7 @@ private:
 
 public:
 	MainCore();
+	GameCore GraphicsCore;
 	bool gamestatus;
 	GameCore Core;
 	Player Player1;
