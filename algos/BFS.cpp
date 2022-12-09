@@ -6,30 +6,105 @@
 
 int main() {
     int n, tmp;
-    std::cin >> n;
-    std::vector<std::vector<int>> g(n, std::vector<int>());
-    for(unsigned int i = 0; i < n; i++)
+    std::vector<std::vector<int>> g(400, std::vector<int>());
+
+    for (unsigned int i = 0; i < 20; i++)
     {
-        for(unsigned int j = 0; j < n; j++)
+        for (unsigned int j = 0; j < 20; j++)
         {
-            std::cin >> tmp;
-            if (tmp)
+            if (i == 0 && j == 0)
             {
-                g[i].push_back(j);
-                g[j].push_back(i);
+                g[i * 20 + j].push_back(1);
+                g[i * 20 + j].push_back(20);
+            }
+            if (i == 19 && j == 0)
+            {
+                g[i * 20 + j].push_back((i - 1) * 20);
+                g[i * 20 + j].push_back(i * 20 + 1);
+            }
+            if (i == 0 && j == 19)
+            {
+                g[i * 20 + j].push_back(18);
+                g[i * 20 + j].push_back(38);
+                g[i * 20 + j].push_back(39);
+            }
+            if (i == 19 && j == 19)
+            {
+                g[i * 20 + j].push_back(i * 20 + j - 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j - 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j);
+            }
+            if (i == 0 && (j > 0 && j < 19))
+            {
+                g[i * 20 + j].push_back(j - 1);
+                g[i * 20 + j].push_back(j + 1);
+                g[i * 20 + j].push_back(20 + j);
+                g[i * 20 + j].push_back(20 + j - 1);
+            }
+            if (i == 19 && (j > 0 && j < 19))
+            {
+                g[i * 20 + j].push_back(i * 20 + j - 1);
+                g[i * 20 + j].push_back(i * 20 + j + 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j + 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j);
+            }
+            if ((i > 0 && i < 19) && (j > 0 && j < 19))
+            {
+                g[i * 20 + j].push_back(i * 20 + j - 1);
+                g[i * 20 + j].push_back(i * 20 + j + 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j);
+                g[i * 20 + j].push_back((i + 1) * 20 + j);
+                if (i % 2 == 0)
+                {
+                    g[i * 20 + j].push_back((i - 1) * 20 + j - 1);
+                    g[i * 20 + j].push_back((i + 1) * 20 + j - 1);
+                }
+                else
+                {
+                    g[i * 20 + j].push_back((i - 1) * 20 + j + 1);
+                    g[i * 20 + j].push_back((i + 1) * 20 + j + 1);
+                }
+            }
+            if ((i > 0 && i < 19) && j == 0)
+            {
+                g[i * 20 + j].push_back(i * 20 + j + 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j);
+                g[i * 20 + j].push_back((i + 1) * 20 + j);
+                if (i % 2 == 1)
+                {
+                    g[i * 20 + j].push_back((i - 1) * 20 + j + 1);
+                    g[i * 20 + j].push_back((i + 1) * 20 + j + 1);
+                }
+            }
+            if ((i > 0 && i < 19) && j == 19)
+            {
+                g[i * 20 + j].push_back(i * 20 + j - 1);
+                g[i * 20 + j].push_back((i - 1) * 20 + j);
+                g[i * 20 + j].push_back((i + 1) * 20 + j);
+                if (i % 2 == 0)
+                {
+                    g[i * 20 + j].push_back((i - 1) * 20 + j - 1);
+                    g[i * 20 + j].push_back((i + 1) * 20 + j - 1);
+                }
             }
         }
     }
 
+
+    for (std::size_t i = 0; i < 400; i++)
+    {
+        std::sort(g[i].begin(), g[i].end());
+    }
+    
+
     int s, to;
-    std::cin >> s >> to;
-    s--;
-    to--;
+    std::cin >> s;
+
 
     std::queue<int> q;
     q.push (s);
-    std::vector<bool> used (n);
-    std::vector<int> d (n), p (n);
+    std::vector<bool> used (400);
+    std::vector<int> d (400), p (400);
     used[s] = true;
     p[s] = -1;
     while (!q.empty())
@@ -49,18 +124,20 @@ int main() {
     	}
     }
 
-    if (!used[to]) std::cout << -1;
-    else
+    std::vector<int> can_go;
+    for (std::size_t to = 0; to < 400; to++)
     {
-    	std::vector<int> path;
-    	for (int v = to; v != -1; v = p[v]) path.push_back(v);
-    	std::reverse (path.begin(), path.end());
-        std::cout << path.size() - 1 << std::endl;
-        if (path.size() - 1 > 0)
-        {
-            for (unsigned int i = 0; i < path.size(); ++i)
-                std::cout << path[i] + 1 << " ";
-        }
+
+        std::vector<int> path;
+        for (int v = to; v != -1; v = p[v])
+            path.push_back(v);
+        std::reverse(path.begin(), path.end());
+        if (path.size() - 1 < 3) can_go.push_back(to);
+    }
+    
+    for (std::size_t i = 0; i < can_go.size(); i++)
+    {
+        std::cout << can_go[i] << " ";
     }
 
     return 0;

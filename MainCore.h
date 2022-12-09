@@ -24,4 +24,5 @@ public:
 	std::vector<Entity*> Entities; /*������ ���� ������� � ����*/
 	void entity_steps(Cell* StartCell);
 	std::vector<std::vector<int>> adj_list(400, std::vector<int>());
+	void fill_adj_list();
 };

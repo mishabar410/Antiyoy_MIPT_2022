@@ -5,7 +5,45 @@
 #include "Cell.h"
 
 
-void MainCore::entity_steps(Cell* StartCell) {
+void MainCore::entity_steps(Cell* StartCell) 
+{
+    int s = Cell->map_coord[0] * 20 + Cell->map_coord[1];
+
+    std::queue<int> q;
+    q.push(s);
+    std::vector<bool> used(400);
+    std::vector<int> d(400), p(400);
+    used[s] = true;
+    p[s] = -1;
+    while (!q.empty())
+    {
+        int v = q.front();
+        q.pop();
+        for (unsigned int i = 0; i < g[v].size(); ++i)
+        {
+            int to = g[v][i];
+            if (!used[to])
+            {
+                used[to] = true;
+                q.push(to);
+                d[to] = d[v] + 1;
+                p[to] = v;
+            }
+        }
+    }
+
+    std::vector<int> can_go;
+    for (unsigned int to = 0; to < 400; to++)
+    {
+
+        std::vector<int> path;
+        for (int v = to; v != -1; v = p[v])
+            path.push_back(v);
+        std::reverse(path.begin(), path.end());
+        if (path.size() - 1 < 3)
+            can_go.push_back(to);
+    }
+
     /*
     ������ ���� �������� �� ��, ���� �� Entity � ������, ����� Cell::entity_pointer. (���������
     ��� ��� �������?)
