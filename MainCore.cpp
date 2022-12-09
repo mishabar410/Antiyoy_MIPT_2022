@@ -25,7 +25,7 @@ MainCore::MainCore() {
             Map_pointer[x][y] = &Map[x][y];
         }
     }
-    Player1 = Player(Map_pointer[20][20]);
-    Player2 = Player(Map_pointer[0][0]);
+    Player1 = Player(&Map[20][20]);
+    Player2 = Player(&Map[0][0]);
 
 }
