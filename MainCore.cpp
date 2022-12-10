@@ -22,12 +22,20 @@ void MainCore::entity_steps(Cell* StartCell)
         for (unsigned int i = 0; i < g[v].size(); ++i)
         {
             int to = g[v][i];
-            if (!used[to])
+            if (!used[to] &&
+                Map[to / 20][to % 20].Player_status == Map[s / 20][s % 20].Player_status)
             {
                 used[to] = true;
                 q.push(to);
                 d[to] = d[v] + 1;
                 p[to] = v;
+            }
+            else
+            {
+                if (!used[to] && Map[to / 20][to % 20].Player_status == 0)
+                {
+                    // ???
+                }
             }
         }
     }

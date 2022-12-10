@@ -13,9 +13,9 @@ public:
 	bool IsinCell(sf::Vector2i mouse_pos);
 	Entity* entity_pointer;//may be use optional
 	int map_coord[2];
+	unsigned short int Player_status; /*0, if there no player, Player_num if there is*/
 
 private:
 	sf::Vector2f coord;/*координаты*/
 	sf::RenderWindow* window;
-	unsigned short int Player_status; /*0, if there no player, Player_num if there is*/
 };
