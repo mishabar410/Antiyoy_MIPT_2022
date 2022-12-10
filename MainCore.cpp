@@ -55,7 +55,7 @@ void MainCore::entity_steps(Cell* StartCell)
 }
 
 
-void MainCore::fill_adj_list():
+void MainCore::fill_adj_list()
 {
     for (unsigned int i = 0; i < 20; i++)
     {
@@ -144,17 +144,6 @@ MainCore::MainCore()
 {
     gamestatus = 1;
     GraphicsCore = GameCore();
-<<<<<<< HEAD
-    for (int x = 0; x < 20; x++) {
-        for (int y = 0; y < 20; y++) {
-          
-                //Map[x][y] = Cell(x, y, GraphicsCore.window);
-                //Map_pointer[x][y] = &Map[x][y];
-                Map[x][y] = Cell(x, y, GraphicsCore.window);
-        }
-    }
-    
-=======
     for (int x = 0; x < 20; x++)
     {
         for (int y = 0; y < 20; y++)
@@ -166,7 +155,6 @@ MainCore::MainCore()
         }
     }
 
->>>>>>> e219cf1 (entity steps)
     /*Player1 = Player(&Map[20][20]);
     Player2 = Player(&Map[0][0]);*/
 }
